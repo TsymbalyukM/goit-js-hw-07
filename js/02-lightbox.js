@@ -21,14 +21,7 @@ const markupGallery = galleryItems
 
 gallery.insertAdjacentHTML("beforeend", markupGallery);
 
-gallery.addEventListener("click", (event) => {
-  event.preventDefault();
-  if (event.target.nodeName !== "IMG") {
-    return;
-  }
-
-  const galleryLightbox = new SimpleLightbox(".gallery__link", {
-    captionsData: "alt",
-    captionDelay: 250,
-  });
+const galleryLightbox = new SimpleLightbox(".gallery__link", {
+  captionsData: "alt",
+  captionDelay: 250,
 });
