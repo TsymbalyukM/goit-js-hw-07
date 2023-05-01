@@ -33,8 +33,18 @@ gallery.addEventListener("click", (event) => {
     return;
   }
   const imageUrl = event.target.dataset.source;
-  const instance = basicLightbox.create(`
-    <img src="${imageUrl}" width="800" height="600">`);
+  const instance = basicLightbox.create(
+    `
+    <img src="${imageUrl}" width="800" height="600">`,
+    {
+      onShow: (instance) => {
+        document.addEventListener("keydown", instance);
+      },
+      onClose: (instance) => {
+        document.removeEventListener("keydown", instance);
+      },
+    }
+  );
   instance.show();
 
   if (instance.visible()) {
