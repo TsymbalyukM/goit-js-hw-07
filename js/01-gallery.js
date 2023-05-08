@@ -38,19 +38,16 @@ gallery.addEventListener("click", (event) => {
     <img src="${imageUrl}" width="800" height="600">`,
     {
       onShow: (instance) => {
-        document.addEventListener("keydown", instance);
+        document.addEventListener("keydown", onEscapeClick);
       },
       onClose: (instance) => {
-        document.removeEventListener("keydown", instance);
+        document.removeEventListener("keydown", onEscapeClick);
       },
     }
   );
   instance.show();
-
-  if (instance.visible()) {
-    document.addEventListener("keydown", (event) => {
-      if (event.code !== "Escape") return;
-      instance.close();
-    });
+  function onEscapeClick(event) {
+    if (event.code === "Escape");
+    instance.close();
   }
 });
